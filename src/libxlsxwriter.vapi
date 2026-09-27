@@ -39,7 +39,7 @@ namespace XlsxWriter {
     public struct FILE {
     }
 
-    [CCode (cname = "lxw_error", cheader_filename = "xlsxwriter/common.h")]
+    [CCode (cprefix = "", cname = "lxw_error", cheader_filename = "xlsxwriter.h,xlsxwriter/common.h")]
     public enum Error {
         LXW_NO_ERROR = 0,
         LXW_ERROR_MEMORY_MALLOC_FAILED = 1,
@@ -70,14 +70,14 @@ namespace XlsxWriter {
         LXW_ERROR_REALLOC_FAILED = 26
     }
 
-    [CCode (cname = "lxw_datetime", cheader_filename = "xlsxwriter/utility.h")]
+    [CCode (cname = "lxw_datetime", cheader_filename = "xlsxwriter/common.h")]
     public struct DateTime {
         public int year;
         public int month;
         public int day;
         public int hour;
-        public double minute;
-        public double second;
+        public int min;
+        public double sec;
     }
 
     [CCode (cname = "lxw_color_t", cheader_filename = "xlsxwriter/format.h")]
@@ -117,7 +117,7 @@ namespace XlsxWriter {
         public const ColorT YELLOW;
     }
 
-    [CCode (cname = "enum lxw_format_underlines", cheader_filename = "xlsxwriter/format.h")]
+    [CCode (cprefix = "", cname = "enum lxw_format_underlines", cheader_filename = "xlsxwriter/format.h")]
     public enum FormatUnderlines {
         LXW_UNDERLINE_NONE = 0,
         LXW_UNDERLINE_SINGLE,
@@ -126,13 +126,13 @@ namespace XlsxWriter {
         LXW_UNDERLINE_DOUBLE_ACCOUNTING
     }
 
-    [CCode (cname = "enum lxw_format_scripts", cheader_filename = "xlsxwriter/format.h")]
+    [CCode (cprefix = "", cname = "enum lxw_format_scripts", cheader_filename = "xlsxwriter/format.h")]
     public enum FormatScripts {
         LXW_FONT_SUPERSCRIPT = 1,
         LXW_FONT_SUBSCRIPT
     }
 
-    [CCode (cname = "enum lxw_format_alignments", cheader_filename = "xlsxwriter/format.h")]
+    [CCode (cprefix = "", cname = "enum lxw_format_alignments", cheader_filename = "xlsxwriter/format.h")]
     public enum FormatAlignments {
         LXW_ALIGN_NONE = 0,
         LXW_ALIGN_LEFT,
@@ -149,14 +149,14 @@ namespace XlsxWriter {
         LXW_ALIGN_VERTICAL_DISTRIBUTED
     }
 
-    [CCode (cname = "enum lxw_format_diagonal_types", cheader_filename = "xlsxwriter/format.h")]
+    [CCode (cprefix = "", cname = "enum lxw_format_diagonal_types", cheader_filename = "xlsxwriter/format.h")]
     public enum FormatDiagonalTypes {
         LXW_DIAGONAL_BORDER_UP = 1,
         LXW_DIAGONAL_BORDER_DOWN,
         LXW_DIAGONAL_BORDER_UP_DOWN
     }
 
-    [CCode (cname = "enum lxw_chart_types", cheader_filename = "xlsxwriter/chart.h")]
+    [CCode (cprefix = "", cname = "enum lxw_chart_types", cheader_filename = "xlsxwriter/chart.h")]
     public enum ChartTypes {
         LXW_CHART_NONE = 0,
         LXW_CHART_AREA,
@@ -195,7 +195,7 @@ namespace XlsxWriter {
         LXW_CHART_COMBO_SCATTER_LINE_SECONDARY
     }
 
-    [CCode (cname = "enum lxw_chart_series_order", cheader_filename = "xlsxwriter/chart.h")]
+    [CCode (cprefix = "", cname = "enum lxw_chart_series_order", cheader_filename = "xlsxwriter/chart.h")]
     public enum ChartSeriesOrder {
         LXW_CHART_COLUMN_SERIES,
         LXW_CHART_BAR_SERIES,
@@ -208,21 +208,20 @@ namespace XlsxWriter {
         LXW_CHART_PIE_SERIES
     }
 
-    [CCode (cname = "enum lxw_chart_axis_types", cheader_filename = "xlsxwriter/chart.h")]
-    public enum ChartAxisTypes {
-        LXW_CHART_AXIS_Y,
-        LXW_CHART_AXIS_X,
-        LXW_CHART_AXIS_Y2
+    [CCode (cprefix = "", cname = "lxw_chart_axis_type", cheader_filename = "xlsxwriter/chart.h")]
+    public enum ChartAxisType {
+        LXW_CHART_AXIS_TYPE_X,
+        LXW_CHART_AXIS_TYPE_Y
     }
 
-    [CCode (cname = "enum lxw_validation_boolean", cheader_filename = "xlsxwriter/worksheet.h")]
+    [CCode (cprefix = "", cname = "enum lxw_validation_boolean", cheader_filename = "xlsxwriter/worksheet.h")]
     public enum ValidationBoolean {
         LXW_VALIDATION_DEFAULT,
         LXW_VALIDATION_OFF,
         LXW_VALIDATION_ON
     }
 
-    [CCode (cname = "enum lxw_validation_types", cheader_filename = "xlsxwriter/worksheet.h")]
+    [CCode (cprefix = "", cname = "enum lxw_validation_types", cheader_filename = "xlsxwriter/worksheet.h")]
     public enum ValidationTypes {
         LXW_VALIDATION_TYPE_NONE,
         LXW_VALIDATION_TYPE_INTEGER,
@@ -241,7 +240,7 @@ namespace XlsxWriter {
         LXW_VALIDATION_TYPE_ANY
     }
 
-    [CCode (cname = "enum lxw_validation_criteria", cheader_filename = "xlsxwriter/worksheet.h")]
+    [CCode (cprefix = "", cname = "enum lxw_validation_criteria", cheader_filename = "xlsxwriter/worksheet.h")]
     public enum ValidationCriteria {
         LXW_VALIDATION_CRITERIA_NONE,
         LXW_VALIDATION_CRITERIA_BETWEEN,
@@ -254,7 +253,7 @@ namespace XlsxWriter {
         LXW_VALIDATION_CRITERIA_LESS_THAN_OR_EQUAL_TO
     }
 
-    [CCode (cname = "enum lxw_conditional_format_types", cheader_filename = "xlsxwriter/worksheet.h")]
+    [CCode (cprefix = "", cname = "enum lxw_conditional_format_types", cheader_filename = "xlsxwriter/worksheet.h")]
     public enum ConditionalFormatTypes {
         LXW_CONDITIONAL_TYPE_NONE,
         LXW_CONDITIONAL_TYPE_CELL,
@@ -277,7 +276,6 @@ namespace XlsxWriter {
     }
 
     [CCode (cname = "lxw_workbook_options", cheader_filename = "xlsxwriter/workbook.h")]
-    [SimpleType]
     public struct WorkbookOptions {
         public uint8 constant_memory;
         public unowned string tmpdir;
@@ -285,7 +283,6 @@ namespace XlsxWriter {
     }
 
     [CCode (cname = "lxw_doc_properties", cheader_filename = "xlsxwriter/workbook.h")]
-    [SimpleType]
     public struct DocProperties {
         public unowned string title;
         public unowned string subject;
@@ -300,7 +297,7 @@ namespace XlsxWriter {
         public TimeT created;
     }
 
-    [CCode (cname = "lxw_format", has_type_id = false, cheader_filename = "xlsxwriter/format.h")]
+    [CCode (cname = "lxw_format", has_type_id = false, free_function = "", cheader_filename = "xlsxwriter/format.h")]
     [Compact]
     public class Format {
         [CCode (cname = "format_set_font_name")]
@@ -315,7 +312,7 @@ namespace XlsxWriter {
         public void set_italic();
         [CCode (cname = "format_set_underline")]
         public void set_underline(FormatUnderlines underline);
-        [CCode (cname = "format_set_strikethrough")]
+        [CCode (cname = "format_set_font_strikeout")]
         public void set_strikethrough();
         [CCode (cname = "format_set_font_script")]
         public void set_font_script(FormatScripts script);
@@ -335,10 +332,7 @@ namespace XlsxWriter {
         public void set_shrink();
         [CCode (cname = "format_set_text_wrap")]
         public void set_text_wrap();
-        [CCode (cname = "format_set_text_wrap_left")]
-        public void set_text_wrap_left();
-        [CCode (cname = "format_set_text_wrap_right")]
-        public void set_text_wrap_right();
+
         [CCode (cname = "format_set_bg_color")]
         public void set_bg_color(ColorT color);
         [CCode (cname = "format_set_fg_color")]
@@ -373,41 +367,35 @@ namespace XlsxWriter {
         public void set_diag_border(uint8 style);
     }
 
-    [CCode (cname = "lxw_chart", has_type_id = false, cheader_filename = "xlsxwriter/chart.h")]
+    [CCode (cname = "lxw_chart", has_type_id = false, free_function = "", cheader_filename = "xlsxwriter/chart.h")]
     [Compact]
     public class Chart {
         [CCode (cname = "chart_add_series")]
-        public Series add_series(unowned string categories, unowned string values);
-        [CCode (cname = "chart_set_title")]
+        public Series add_series(string? categories, string? values);
+        [CCode (cname = "chart_title_set_name")]
         public void set_title(string name);
-        [CCode (cname = "chart_set_legend")]
+        [CCode (cname = "chart_legend_set_position")]
         public void set_legend(uint8 position);
-        [CCode (cname = "chart_set_x_axis")]
-        public void set_x_axis(Axis axis);
-        [CCode (cname = "chart_set_y_axis")]
-        public void set_y_axis(Axis axis);
-        [CCode (cname = "chart_set_size")]
-        public void set_size(uint32 width, uint32 height);
+        [CCode (cname = "chart_axis_get")]
+        public unowned Axis axis_get(ChartAxisType axis_type);
     }
 
-    [CCode (cname = "lxw_chart_series", has_type_id = false, cheader_filename = "xlsxwriter/chart.h")]
+    [CCode (cname = "lxw_chart_series", has_type_id = false, free_function = "", cheader_filename = "xlsxwriter/chart.h")]
     [Compact]
     public class Series {
         [CCode (cname = "chart_series_set_name")]
-        public void set_name(unowned string name);
+        public void set_name(string name);
         [CCode (cname = "chart_series_set_categories")]
-        public void set_categories(unowned string categories);
+        public void set_categories(string categories);
         [CCode (cname = "chart_series_set_values")]
-        public void set_values(unowned string values);
-        [CCode (cname = "chart_series_set_format")]
-        public void set_format(Format format);
+        public void set_values(string values);
     }
 
-    [CCode (cname = "lxw_chart_axis", has_type_id = false, cheader_filename = "xlsxwriter/chart.h")]
+    [CCode (cname = "lxw_chart_axis", has_type_id = false, free_function = "", cheader_filename = "xlsxwriter/chart.h")]
     [Compact]
     public class Axis {
         [CCode (cname = "chart_axis_set_name")]
-        public void set_name(unowned string name);
+        public void set_name(string name);
         [CCode (cname = "chart_axis_set_min")]
         public void set_min(double min);
         [CCode (cname = "chart_axis_set_max")]
@@ -418,17 +406,17 @@ namespace XlsxWriter {
         public void set_minor_unit(double unit);
     }
 
-    [CCode (cname = "lxw_worksheet", has_type_id = false, cheader_filename = "xlsxwriter/worksheet.h")]
+    [CCode (cname = "lxw_worksheet", has_type_id = false, free_function = "", cheader_filename = "xlsxwriter/worksheet.h")]
     [Compact]
     public class Worksheet {
         [CCode (cname = "worksheet_write_string")]
-        public Error write_string(uint32 row, uint32 col, unowned string string, Format? format);
+        public Error write_string(uint32 row, uint32 col, string string, Format? format);
         [CCode (cname = "worksheet_write_number")]
         public Error write_number(uint32 row, uint32 col, double number, Format? format);
         [CCode (cname = "worksheet_write_formula")]
-        public Error write_formula(uint32 row, uint32 col, unowned string formula, Format? format);
+        public Error write_formula(uint32 row, uint32 col, string formula, Format? format);
         [CCode (cname = "worksheet_write_formula_num")]
-        public Error write_formula_num(uint32 row, uint32 col, unowned string formula, double result, Format? format);
+        public Error write_formula_num(uint32 row, uint32 col, string formula, double result, Format? format);
         [CCode (cname = "worksheet_write_blank")]
         public Error write_blank(uint32 row, uint32 col, Format? format);
         [CCode (cname = "worksheet_write_boolean")]
@@ -436,27 +424,17 @@ namespace XlsxWriter {
         [CCode (cname = "worksheet_write_datetime")]
         public Error write_datetime(uint32 row, uint32 col, DateTime datetime, Format? format);
         [CCode (cname = "worksheet_write_url")]
-        public Error write_url(uint32 row, uint32 col, unowned string url, Format? format);
+        public Error write_url(uint32 row, uint32 col, string url, Format? format);
         [CCode (cname = "worksheet_write_url_opt")]
-        public Error write_url_opt(uint32 row, uint32 col, unowned string url, Format? format, unowned string? string, unowned string? tooltip);
-        [CCode (cname = "worksheet_write_column")]
-        public Error write_column(uint32 row, uint32 col, [CCode (array_length = false)] unowned string[] strings, Format? format);
-        [CCode (cname = "worksheet_write_row")]
-        public Error write_row(uint32 row, uint32 col, [CCode (array_length = false)] unowned string[] strings, Format? format);
-        [CCode (cname = "worksheet_write_column_number")]
-        public Error write_column_number(uint32 row, uint32 col, [CCode (array_length = false)] double[] numbers, Format? format);
-        [CCode (cname = "worksheet_write_row_number")]
-        public Error write_row_number(uint32 row, uint32 col, [CCode (array_length = false)] double[] numbers, Format? format);
+        public Error write_url_opt(uint32 row, uint32 col, string url, Format? format, string? string, string? tooltip);
         [CCode (cname = "worksheet_insert_image")]
-        public Error insert_image(uint32 row, uint32 col, unowned string filename);
+        public Error insert_image(uint32 row, uint32 col, string filename);
         [CCode (cname = "worksheet_insert_image_opt")]
-        public Error insert_image_opt(uint32 row, uint32 col, unowned string filename, ImageOpt options);
+        public Error insert_image_opt(uint32 row, uint32 col, string filename, ImageOptions? options);
         [CCode (cname = "worksheet_insert_chart")]
         public Error insert_chart(uint32 row, uint32 col, Chart chart);
         [CCode (cname = "worksheet_insert_chart_opt")]
-        public Error insert_chart_opt(uint32 row, uint32 col, Chart chart, ChartOpt options);
-        [CCode (cname = "worksheet_draw_image")]
-        public Error draw_image(Chart chart);
+        public Error insert_chart_opt(uint32 row, uint32 col, Chart chart, ChartOptions? options);
         [CCode (cname = "worksheet_set_column")]
         public Error set_column(uint32 first_col, uint32 last_col, double width, Format? format);
         [CCode (cname = "worksheet_set_column_pixels")]
@@ -466,175 +444,135 @@ namespace XlsxWriter {
         [CCode (cname = "worksheet_set_row_pixels")]
         public Error set_row_pixels(uint32 row, uint32 height, Format? format);
         [CCode (cname = "worksheet_set_default_row")]
-        public Error set_default_row(double height, uint8 hide_unused_rows);
-        [CCode (cname = "worksheet_set_default_row_pixels")]
-        public Error set_default_row_pixels(uint32 height, uint8 hide_unused_rows);
+        public void set_default_row(double height, uint8 hide_unused_rows);
         [CCode (cname = "worksheet_merge_range")]
-        public Error merge_range(uint32 first_row, uint32 first_col, uint32 last_row, uint32 last_col, unowned string string, Format? format);
+        public Error merge_range(uint32 first_row, uint32 first_col, uint32 last_row, uint32 last_col, string string, Format? format);
         [CCode (cname = "worksheet_set_selection")]
-        public Error set_selection(uint32 first_row, uint32 first_col, uint32 last_row, uint32 last_col);
-        [CCode (cname = "worksheet_set_row_outline_level")]
-        public Error set_row_outline_level(uint32 row, uint8 level);
-        [CCode (cname = "worksheet_set_column_outline_level")]
-        public Error set_column_outline_level(uint32 first_col, uint32 last_col, uint8 level);
+        public void set_selection(uint32 first_row, uint32 first_col, uint32 last_row, uint32 last_col);
+        [CCode (cname = "worksheet_set_row_opt")]
+        public Error set_row_opt(uint32 row, double height, Format? format, RowColOptions? options);
+        [CCode (cname = "worksheet_set_column_opt")]
+        public Error set_column_opt(uint32 first_col, uint32 last_col, double width, Format? format, RowColOptions? options);
+        [CCode (cname = "worksheet_outline_settings")]
+        public void outline_settings(uint8 visible, uint8 symbols_below, uint8 symbols_right, uint8 auto_style);
         [CCode (cname = "worksheet_set_zoom")]
-        public Error set_zoom(uint16 zoom);
+        public void set_zoom(uint16 zoom);
         [CCode (cname = "worksheet_set_tab_color")]
-        public Error set_tab_color(ColorT color);
+        public void set_tab_color(ColorT color);
         [CCode (cname = "worksheet_protect")]
-        public Error protect(unowned string password, WorksheetProtection options);
-        [CCode (cname = "worksheet_set_default_width")]
-        public void set_default_width(double width);
-        [CCode (cname = "worksheet_set_default_height")]
-        public void set_default_height(double height);
-        [CCode (cname = "worksheet_set_default_width_pixels")]
-        public void set_default_width_pixels(uint32 width);
-        [CCode (cname = "worksheet_set_default_height_pixels")]
-        public void set_default_height_pixels(uint32 height);
+        public void protect(string? password, WorksheetProtection? options);
         [CCode (cname = "worksheet_gridlines")]
-        public Error gridlines(uint8 option);
-        [CCode (cname = "worksheet_screen_gridlines")]
-        public Error screen_gridlines(uint8 show);
-        [CCode (cname = "worksheet_print_gridlines")]
-        public Error print_gridlines(uint8 show);
+        public void gridlines(Gridlines option);
         [CCode (cname = "worksheet_center_horizontally")]
-        public Error center_horizontally();
+        public void center_horizontally();
         [CCode (cname = "worksheet_center_vertically")]
-        public Error center_vertically();
+        public void center_vertically();
         [CCode (cname = "worksheet_set_landscape")]
-        public Error set_landscape();
+        public void set_landscape();
         [CCode (cname = "worksheet_set_portrait")]
-        public Error set_portrait();
+        public void set_portrait();
         [CCode (cname = "worksheet_set_page_view")]
-        public Error set_page_view();
+        public void set_page_view();
         [CCode (cname = "worksheet_set_paper")]
-        public Error set_paper(uint8 paper_size);
-        [CCode (cname = "worksheet_set_page_order")]
-        public Error set_page_order(uint8 order);
-        [CCode (cname = "worksheet_set_black_white")]
-        public Error set_black_white();
-        [CCode (cname = "worksheet_set_draft")]
-        public Error set_draft();
+        public void set_paper(uint8 paper_size);
+        [CCode (cname = "worksheet_print_across")]
+        public void print_across();
+        [CCode (cname = "worksheet_print_black_and_white")]
+        public void print_black_and_white();
         [CCode (cname = "worksheet_set_print_scale")]
-        public Error set_print_scale(uint16 scale);
+        public void set_print_scale(uint16 scale);
         [CCode (cname = "worksheet_fit_to_pages")]
-        public Error fit_to_pages(uint16 width, uint16 height);
+        public void fit_to_pages(uint16 width, uint16 height);
         [CCode (cname = "worksheet_set_start_page")]
-        public Error set_start_page(uint16 start_page);
-        [CCode (cname = "worksheet_set_print_area")]
-        public Error set_print_area(unowned string area);
+        public void set_start_page(uint16 start_page);
+        [CCode (cname = "worksheet_print_area")]
+        public Error print_area(uint32 first_row, uint32 first_col, uint32 last_row, uint32 last_col);
         [CCode (cname = "worksheet_repeat_rows")]
         public Error repeat_rows(uint32 first_row, uint32 last_row);
         [CCode (cname = "worksheet_repeat_columns")]
         public Error repeat_columns(uint32 first_col, uint32 last_col);
         [CCode (cname = "worksheet_set_header")]
-        public Error set_header(unowned string header);
+        public Error set_header(string header);
         [CCode (cname = "worksheet_set_footer")]
-        public Error set_footer(unowned string footer);
-        [CCode (cname = "worksheet_set_header_image")]
-        public Error set_header_image(unowned string filename, uint8 position);
-        [CCode (cname = "worksheet_set_footer_image")]
-        public Error set_footer_image(unowned string filename, uint8 position);
+        public Error set_footer(string footer);
         [CCode (cname = "worksheet_set_margins")]
-        public Error set_margins(double left, double right, double top, double bottom);
+        public void set_margins(double left, double right, double top, double bottom);
         [CCode (cname = "worksheet_hide")]
-        public Error hide();
+        public void hide();
         [CCode (cname = "worksheet_activate")]
-        public Error activate();
+        public void activate();
         [CCode (cname = "worksheet_select")]
-        public Error select();
+        public void select();
         [CCode (cname = "worksheet_set_first_sheet")]
-        public Error set_first_sheet();
+        public void set_first_sheet();
         [CCode (cname = "worksheet_freeze_panes")]
-        public Error freeze_panes(uint32 row, uint32 col);
+        public void freeze_panes(uint32 row, uint32 col);
         [CCode (cname = "worksheet_freeze_panes_opt")]
-        public Error freeze_panes_opt(uint32 row, uint32 col, uint8 top_row, uint8 first_col);
+        public void freeze_panes_opt(uint32 row, uint32 col, uint8 top_row, uint8 first_col);
         [CCode (cname = "worksheet_split_panes")]
-        public Error split_panes(double row, double col);
+        public void split_panes(double row, double col);
         [CCode (cname = "worksheet_split_panes_opt")]
-        public Error split_panes_opt(double row, double col, uint32 top_row, uint32 first_col);
-        [CCode (cname = "worksheet_set_panes_position")]
-        public Error set_panes_position(double x, double y);
-        [CCode (cname = "worksheet_set_column_format")]
-        public Error set_column_format(uint32 first_col, uint32 last_col, Format format);
-        [CCode (cname = "worksheet_set_row_format")]
-        public Error set_row_format(uint32 row, Format format);
-        [CCode (cname = "worksheet_data_validation")]
-        public Error data_validation(uint32 first_row, uint32 first_col, uint32 last_row, uint32 last_col, DataValidation validation);
-        [CCode (cname = "worksheet_conditional_format")]
-        public Error conditional_format(uint32 first_row, uint32 first_col, uint32 last_row, uint32 last_col, [CCode (array_length_pos = 4)] ConditionalFormat[] formats);
-        [CCode (cname = "worksheet_add_sparkline")]
-        public Error add_sparkline(unowned string location, SparklineOpt options);
-        [CCode (cname = "worksheet_add_comment")]
-        public Error add_comment(uint32 row, uint32 col, unowned string comment);
-        [CCode (cname = "worksheet_add_comment_opt")]
-        public Error add_comment_opt(uint32 row, uint32 col, unowned string comment, CommentOpt options);
+        public void split_panes_opt(double row, double col, uint32 top_row, uint32 first_col);
+        [CCode (cname = "worksheet_data_validation_cell")]
+        public Error data_validation_cell(uint32 row, uint32 col, DataValidation validation);
+        [CCode (cname = "worksheet_data_validation_range")]
+        public Error data_validation_range(uint32 first_row, uint32 first_col, uint32 last_row, uint32 last_col, DataValidation validation);
+        [CCode (cname = "worksheet_conditional_format_cell")]
+        public Error conditional_format_cell(uint32 row, uint32 col, ConditionalFormat format);
+        [CCode (cname = "worksheet_conditional_format_range")]
+        public Error conditional_format_range(uint32 first_row, uint32 first_col, uint32 last_row, uint32 last_col, ConditionalFormat format);
+        [CCode (cname = "worksheet_write_comment")]
+        public Error write_comment(uint32 row, uint32 col, string comment);
+        [CCode (cname = "worksheet_write_comment_opt")]
+        public Error write_comment_opt(uint32 row, uint32 col, string comment, CommentOptions? options);
         [CCode (cname = "worksheet_show_comments")]
-        public Error show_comments();
+        public void show_comments();
         [CCode (cname = "worksheet_set_comments_author")]
-        public Error set_comments_author(unowned string author);
-        [CCode (cname = "worksheet_set_row_hidden")]
-        public Error set_row_hidden(uint32 row);
-        [CCode (cname = "worksheet_set_column_hidden")]
-        public Error set_column_hidden(uint32 col);
-        [CCode (cname = "worksheet_set_group")]
-        public Error set_group(uint32 first, uint32 last, uint8 collapsed, uint8 is_row);
-        [CCode (cname = "worksheet_set_group_rows")]
-        public Error set_group_rows(uint32 first, uint32 last, uint8 collapsed);
-        [CCode (cname = "worksheet_set_group_columns")]
-        public Error set_group_columns(uint32 first, uint32 last, uint8 collapsed);
-        [CCode (cname = "worksheet_set_autofilter")]
-        public Error set_autofilter(uint32 first_row, uint32 first_col, uint32 last_row, uint32 last_col);
-        [CCode (cname = "worksheet_set_table")]
-        public Error set_table(uint32 first_row, uint32 first_col, uint32 last_row, uint32 last_col, TableOpt options);
+        public void set_comments_author(string author);
+        [CCode (cname = "worksheet_autofilter")]
+        public Error autofilter(uint32 first_row, uint32 first_col, uint32 last_row, uint32 last_col);
+        [CCode (cname = "worksheet_add_table")]
+        public Error add_table(uint32 first_row, uint32 first_col, uint32 last_row, uint32 last_col, TableOptions? options);
         [CCode (cname = "worksheet_set_vba_name")]
-        public Error set_vba_name(unowned string name);
+        public Error set_vba_name(string name);
     }
 
-    [CCode (cname = "lxw_chartsheet", has_type_id = false, cheader_filename = "xlsxwriter/chartsheet.h")]
+    [CCode (cname = "lxw_chartsheet", has_type_id = false, free_function = "", cheader_filename = "xlsxwriter/chartsheet.h")]
     [Compact]
     public class Chartsheet {
         [CCode (cname = "chartsheet_set_chart")]
         public Error set_chart(Chart chart);
+        [CCode (cname = "chartsheet_set_chart_opt")]
+        public Error set_chart_opt(Chart chart, ChartOptions? options);
         [CCode (cname = "chartsheet_activate")]
-        public Error activate();
+        public void activate();
         [CCode (cname = "chartsheet_select")]
-        public Error select();
+        public void select();
         [CCode (cname = "chartsheet_hide")]
-        public Error hide();
+        public void hide();
+        [CCode (cname = "chartsheet_set_first_sheet")]
+        public void set_first_sheet();
         [CCode (cname = "chartsheet_set_zoom")]
-        public Error set_zoom(uint16 zoom);
+        public void set_zoom(uint16 zoom);
         [CCode (cname = "chartsheet_set_tab_color")]
-        public Error set_tab_color(ColorT color);
+        public void set_tab_color(ColorT color);
+        [CCode (cname = "chartsheet_protect")]
+        public void protect(string? password, WorksheetProtection? options);
         [CCode (cname = "chartsheet_set_landscape")]
-        public Error set_landscape();
+        public void set_landscape();
         [CCode (cname = "chartsheet_set_portrait")]
-        public Error set_portrait();
-        [CCode (cname = "chartsheet_set_page_view")]
-        public Error set_page_view();
+        public void set_portrait();
         [CCode (cname = "chartsheet_set_paper")]
-        public Error set_paper(uint8 paper_size);
+        public void set_paper(uint8 paper_size);
         [CCode (cname = "chartsheet_set_margins")]
-        public Error set_margins(double left, double right, double top, double bottom);
+        public void set_margins(double left, double right, double top, double bottom);
         [CCode (cname = "chartsheet_set_header")]
-        public Error set_header(unowned string header);
+        public Error set_header(string header);
         [CCode (cname = "chartsheet_set_footer")]
-        public Error set_footer(unowned string footer);
-        [CCode (cname = "chartsheet_set_header_image")]
-        public Error set_header_image(unowned string filename, uint8 position);
-        [CCode (cname = "chartsheet_set_footer_image")]
-        public Error set_footer_image(unowned string filename, uint8 position);
-        [CCode (cname = "chartsheet_set_print_scale")]
-        public Error set_print_scale(uint16 scale);
-        [CCode (cname = "chartsheet_fit_to_pages")]
-        public Error fit_to_pages(uint16 width, uint16 height);
-        [CCode (cname = "chartsheet_set_start_page")]
-        public Error set_start_page(uint16 start_page);
-        [CCode (cname = "chartsheet_set_vba_name")]
-        public Error set_vba_name(unowned string name);
+        public Error set_footer(string footer);
     }
 
-    [CCode (cname = "lxw_workbook", has_type_id = false, cheader_filename = "xlsxwriter/workbook.h")]
+    [CCode (cname = "lxw_workbook", has_type_id = false, free_function = "", cheader_filename = "xlsxwriter/workbook.h")]
     [Compact]
     public class Workbook {
         [CCode (cname = "workbook_new")]
@@ -679,26 +617,84 @@ namespace XlsxWriter {
         public void read_only_recommended();
     }
 
-    [CCode (cname = "lxw_image_opt", cheader_filename = "xlsxwriter/worksheet.h")]
-    [SimpleType]
-    public struct ImageOpt {
-        public uint32 x_offset;
-        public uint32 y_offset;
-        public uint32 x_scale;
-        public uint32 y_scale;
+    [CCode (cprefix = "", cname = "enum lxw_gridlines", cheader_filename = "xlsxwriter/worksheet.h")]
+    public enum Gridlines {
+        LXW_HIDE_ALL_GRIDLINES,
+        LXW_SHOW_SCREEN_GRIDLINES,
+        LXW_SHOW_PRINT_GRIDLINES,
+        LXW_SHOW_ALL_GRIDLINES
     }
 
-    [CCode (cname = "lxw_chart_opt", cheader_filename = "xlsxwriter/worksheet.h")]
-    [SimpleType]
-    public struct ChartOpt {
-        public uint32 x_offset;
-        public uint32 y_offset;
-        public uint32 x_scale;
-        public uint32 y_scale;
+    [CCode (cprefix = "", cname = "enum lxw_conditional_criteria", cheader_filename = "xlsxwriter/worksheet.h")]
+    public enum ConditionalCriteria {
+        LXW_CONDITIONAL_CRITERIA_NONE,
+        LXW_CONDITIONAL_CRITERIA_EQUAL_TO,
+        LXW_CONDITIONAL_CRITERIA_NOT_EQUAL_TO,
+        LXW_CONDITIONAL_CRITERIA_GREATER_THAN,
+        LXW_CONDITIONAL_CRITERIA_LESS_THAN,
+        LXW_CONDITIONAL_CRITERIA_GREATER_THAN_OR_EQUAL_TO,
+        LXW_CONDITIONAL_CRITERIA_LESS_THAN_OR_EQUAL_TO,
+        LXW_CONDITIONAL_CRITERIA_BETWEEN,
+        LXW_CONDITIONAL_CRITERIA_NOT_BETWEEN,
+        LXW_CONDITIONAL_CRITERIA_TEXT_CONTAINING,
+        LXW_CONDITIONAL_CRITERIA_TEXT_NOT_CONTAINING,
+        LXW_CONDITIONAL_CRITERIA_TEXT_BEGINS_WITH,
+        LXW_CONDITIONAL_CRITERIA_TEXT_ENDS_WITH,
+        LXW_CONDITIONAL_CRITERIA_TIME_PERIOD_YESTERDAY,
+        LXW_CONDITIONAL_CRITERIA_TIME_PERIOD_TODAY,
+        LXW_CONDITIONAL_CRITERIA_TIME_PERIOD_TOMORROW,
+        LXW_CONDITIONAL_CRITERIA_TIME_PERIOD_LAST_7_DAYS,
+        LXW_CONDITIONAL_CRITERIA_TIME_PERIOD_LAST_WEEK,
+        LXW_CONDITIONAL_CRITERIA_TIME_PERIOD_THIS_WEEK,
+        LXW_CONDITIONAL_CRITERIA_TIME_PERIOD_NEXT_WEEK,
+        LXW_CONDITIONAL_CRITERIA_TIME_PERIOD_LAST_MONTH,
+        LXW_CONDITIONAL_CRITERIA_TIME_PERIOD_THIS_MONTH,
+        LXW_CONDITIONAL_CRITERIA_TIME_PERIOD_NEXT_MONTH,
+        LXW_CONDITIONAL_CRITERIA_AVERAGE_ABOVE,
+        LXW_CONDITIONAL_CRITERIA_AVERAGE_BELOW,
+        LXW_CONDITIONAL_CRITERIA_AVERAGE_ABOVE_OR_EQUAL,
+        LXW_CONDITIONAL_CRITERIA_AVERAGE_BELOW_OR_EQUAL,
+        LXW_CONDITIONAL_CRITERIA_AVERAGE_1_STD_DEV_ABOVE,
+        LXW_CONDITIONAL_CRITERIA_AVERAGE_1_STD_DEV_BELOW,
+        LXW_CONDITIONAL_CRITERIA_AVERAGE_2_STD_DEV_ABOVE,
+        LXW_CONDITIONAL_CRITERIA_AVERAGE_2_STD_DEV_BELOW,
+        LXW_CONDITIONAL_CRITERIA_AVERAGE_3_STD_DEV_ABOVE,
+        LXW_CONDITIONAL_CRITERIA_AVERAGE_3_STD_DEV_BELOW,
+        LXW_CONDITIONAL_CRITERIA_TOP_OR_BOTTOM_PERCENT
+    }
+
+    [CCode (cname = "lxw_row_col_options", cheader_filename = "xlsxwriter/worksheet.h")]
+    public struct RowColOptions {
+        public uint8 hidden;
+        public uint8 level;
+        public uint8 collapsed;
+    }
+
+    [CCode (cname = "lxw_image_options", cheader_filename = "xlsxwriter/worksheet.h")]
+    public struct ImageOptions {
+        public int32 x_offset;
+        public int32 y_offset;
+        public double x_scale;
+        public double y_scale;
+        public uint8 object_position;
+        public unowned string? description;
+        public uint8 decorative;
+        public unowned string? url;
+        public unowned string? tip;
+    }
+
+    [CCode (cname = "lxw_chart_options", cheader_filename = "xlsxwriter/worksheet.h")]
+    public struct ChartOptions {
+        public int32 x_offset;
+        public int32 y_offset;
+        public double x_scale;
+        public double y_scale;
+        public uint8 object_position;
+        public unowned string? description;
+        public uint8 decorative;
     }
 
     [CCode (cname = "lxw_protection", cheader_filename = "xlsxwriter/worksheet.h")]
-    [SimpleType]
     public struct WorksheetProtection {
         public uint8 no_select_locked_cells;
         public uint8 no_select_unlocked_cells;
@@ -713,120 +709,101 @@ namespace XlsxWriter {
         public uint8 sort;
         public uint8 autofilter;
         public uint8 pivot_tables;
-        public uint8 objects;
         public uint8 scenarios;
-        public uint8 format;
-        public uint8 columns;
-        public uint8 rows;
-        public uint8 hyperlinks;
-        public uint8 delete_column;
-        public uint8 delete_row;
-        public uint8 select_locked_cells;
-        public uint8 select_unlocked_cells;
-        public uint8 password;
+        public uint8 objects;
+        public uint8 no_content;
+        public uint8 no_objects;
     }
 
     [CCode (cname = "lxw_data_validation", cheader_filename = "xlsxwriter/worksheet.h")]
-    [SimpleType]
     public struct DataValidation {
-        public ValidationBoolean ignore_blank;
-        public ValidationBoolean sqref;
         public ValidationTypes validate;
         public ValidationCriteria criteria;
-        public double minimum_number;
-        public double maximum_number;
-        public unowned string minimum_string;
-        public unowned string maximum_string;
-        public unowned string value_list;
-        public unowned string input_message;
-        public unowned string input_title;
-        public unowned string error_message;
-        public unowned string error_title;
+        public ValidationBoolean ignore_blank;
+        public ValidationBoolean show_input;
+        public ValidationBoolean show_error;
         public uint8 error_type;
         public ValidationBoolean dropdown;
+        public double value_number;
+        public unowned string? value_formula;
+        [CCode (array_length = false)]
+        public unowned string?[]? value_list;
+        public DateTime value_datetime;
+        public double minimum_number;
+        public unowned string? minimum_formula;
+        public DateTime minimum_datetime;
+        public double maximum_number;
+        public unowned string? maximum_formula;
+        public DateTime maximum_datetime;
+        public unowned string? input_title;
+        public unowned string? input_message;
+        public unowned string? error_title;
+        public unowned string? error_message;
     }
 
     [CCode (cname = "lxw_conditional_format", cheader_filename = "xlsxwriter/worksheet.h")]
     public struct ConditionalFormat {
         public ConditionalFormatTypes type;
-        public unowned string source;
-        public uint8 multi_range;
-        public Format format;
-        public Format min_format;
-        public Format mid_format;
-        public Format max_format;
-        public uint8 criterias;
-        public double minimum;
-        public double maximum;
+        public ConditionalCriteria criteria;
+        public double value;
+        public unowned string? value_string;
+        public unowned Format? format;
         public double min_value;
+        public unowned string? min_value_string;
+        public uint8 min_rule_type;
+        public double mid_value;
+        public unowned string? mid_value_string;
+        public uint8 mid_rule_type;
         public double max_value;
-        public double min_type;
-        public double max_type;
-        public uint8 bar_direction;
-        public uint8 bar_border;
+        public unowned string? max_value_string;
+        public uint8 max_rule_type;
+        public uint8 bar_only;
+        public uint8 data_bar_2010;
         public uint8 bar_solid;
+        public uint8 bar_negative_color_same;
+        public uint8 bar_negative_border_color_same;
+        public uint8 bar_no_border;
+        public uint8 bar_direction;
+        public uint8 bar_axis_position;
         public uint8 icon_style;
         public uint8 reverse_icons;
         public uint8 icons_only;
-        public double rank;
+        public unowned string? multi_range;
         public uint8 stop_if_true;
-        public uint8 average_rule;
-        public uint8 above;
-        public uint8 below;
-        public uint8 percent;
-        public uint8 points;
     }
 
-    [CCode (cname = "lxw_sparkline_opt", cheader_filename = "xlsxwriter/worksheet.h")]
-    public struct SparklineOpt {
-        public unowned string location;
-        public unowned string range;
-        public uint8 type;
-        public uint8 date_axis;
-        public uint8 markers;
-        public uint8 high_points;
-        public uint8 low_points;
-        public uint8 first_points;
-        public uint8 last_points;
-        public uint8 negative_points;
-        public uint8 display_axis;
-        public uint8 display_hidden;
-        public uint8 min;
-        public uint8 max;
-        public uint8 empty_cells;
-        public Format series_color;
-        public Format high_color;
-        public Format low_color;
-        public Format first_color;
-        public Format last_color;
-        public Format negative_color;
-        public Format markers_color;
-        public Format axis_color;
+    [CCode (cname = "lxw_comment_options", cheader_filename = "xlsxwriter/worksheet.h")]
+    public struct CommentOptions {
+        public uint8 visible;
+        public unowned string? author;
+        public uint16 width;
+        public uint16 height;
+        public double x_scale;
+        public double y_scale;
+        public ColorT color;
+        public unowned string? font_name;
+        public double font_size;
+        public uint8 font_family;
+        public uint32 start_row;
+        public uint32 start_col;
+        public int32 x_offset;
+        public int32 y_offset;
     }
 
-    [CCode (cname = "lxw_comment_opt", cheader_filename = "xlsxwriter/worksheet.h")]
-    [SimpleType]
-    public struct CommentOpt {
-        public unowned string author;
-        public uint32 visible;
-        public uint32 x_scale;
-        public uint32 y_scale;
-        public uint32 x_offset;
-        public uint32 y_offset;
-        public uint32 color;
-    }
-
-    [CCode (cname = "lxw_table_opt", cheader_filename = "xlsxwriter/worksheet.h")]
-    [SimpleType]
-    public struct TableOpt {
-        public unowned string name;
-        public unowned string total_row;
-        public unowned string style;
-        public unowned string id;
+    [CCode (cname = "lxw_table_options", cheader_filename = "xlsxwriter/worksheet.h")]
+    public struct TableOptions {
+        public unowned string? name;
+        public uint8 no_header_row;
+        public uint8 no_autofilter;
+        public uint8 no_banded_rows;
+        public uint8 banded_columns;
         public uint8 first_column;
         public uint8 last_column;
-        public uint8 banded_rows;
-        public uint8 banded_cols;
+        public uint8 style_type;
+        public uint8 style_type_number;
+        public uint8 total_row;
+        // `columns` (per-column header/formula/format overrides) is not bound;
+        // pass null to use default sequential headers.
     }
 
     [CCode (cname = "LXW_VERSION", cheader_filename = "xlsxwriter.h")]
