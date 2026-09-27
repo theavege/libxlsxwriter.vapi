@@ -2,14 +2,13 @@
 
 set -euo pipefail
 source '/etc/os-release'
-declare -ar PKGS=(valac pkg-config)
 if ! command -v vala; then
     case ${ID:?} in
         debian | ubuntu)
             sudo apt-get update
-            sudo apt-get install -y "${PKGS[@]}" libxlsxwriter-dev
+            sudo apt-get install -y valac libxlsxwriter-dev
             ;;
-        fedora | alma) sudo dnf install -y "${PKGS[@]}" libxlsxwriter-devel ;;
+        fedora | alma) sudo dnf install -y vala libxlsxwriter-devel ;;
     esac 1>/dev/null
 fi
 
