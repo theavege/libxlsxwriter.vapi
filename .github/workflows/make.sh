@@ -2,7 +2,7 @@
 
 set -euo pipefail
 source '/etc/os-release'
-declare -ar PKGS=(vala pkg-config)
+declare -ar PKGS=(valac pkg-config)
 if ! command -v vala; then
     case ${ID:?} in
         debian | ubuntu)
