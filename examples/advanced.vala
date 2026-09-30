@@ -73,8 +73,11 @@ int main(string[] args)
     chart_sheet.set_chart(chart);
 
     // Add document properties
-    var props = new XlsxWriter.DocProperties(){title = "Sales Report", subject = "Monthly Sales Analysis",
-                                               author = "Vala User", company = "Example Corp"};
+    var props = XlsxWriter.DocProperties() {
+        title = "Sales Report",
+        subject = "Monthly Sales Analysis",
+        author = "Vala User", company = "Example Corp"
+    };
     workbook.set_properties(props);
 
     // Close the workbook
