@@ -1,7 +1,6 @@
 /* Simple example demonstrating basic libxlsxwriter usage with Vala */
 
-int main(string[] args)
-{
+int main(string[] args) {
     // Create a new workbook
     var workbook = new XlsxWriter.Workbook("example.xlsx");
 
@@ -27,8 +26,7 @@ int main(string[] args)
 
     // Close the workbook
     var err = workbook.close();
-    if (err != XlsxWriter.Error.LXW_NO_ERROR)
-    {
+    if (err != XlsxWriter.Error.LXW_NO_ERROR) {
         critical("Error closing workbook: %s\n", strerror(err));
         return 1;
     }

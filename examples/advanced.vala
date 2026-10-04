@@ -1,7 +1,6 @@
 /* Advanced example demonstrating formatting, formulas, and charts with Vala */
 
-int main(string[] args)
-{
+int main(string[] args) {
     // Create a new workbook
     var workbook = new XlsxWriter.Workbook("advanced_example.xlsx");
 
@@ -33,8 +32,7 @@ int main(string[] args)
     double[] sales = {10000, 15000, 12000, 18000, 20000, 25000};
     double[] expenses = {8000, 12000, 9000, 14000, 16000, 18000};
 
-    for (int i = 0; i < months.length; i++)
-    {
+    for (int i = 0; i < months.length; i++) {
         worksheet.write_string(i + 1, 0, months[i], null);
         worksheet.write_number(i + 1, 1, sales[i], currency_format);
         worksheet.write_number(i + 1, 2, expenses[i], currency_format);
@@ -82,8 +80,7 @@ int main(string[] args)
 
     // Close the workbook
     var err = workbook.close();
-    if (err != XlsxWriter.Error.LXW_NO_ERROR)
-    {
+    if (err != XlsxWriter.Error.LXW_NO_ERROR) {
         critical("Error closing workbook: %s\n", strerror(err));
         return 1;
     }
